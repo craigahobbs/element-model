@@ -1,7 +1,7 @@
 {
     "type": "module",
     "name": "element-model",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "description": "HTML and SVG element object model and renderer for the browser",
     "keywords": "html svg element model render browser",
     "homepage": "https://github.com/craigahobbs/element-model#readme",
