@@ -3,18 +3,9 @@
 
 /* eslint-disable id-length */
 
-import {nbsp, renderElements, validateElements} from '../element-model/index.js';
+import {renderElements, validateElements} from '../element-model/index.js';
 import Window from 'window';
 import test from 'ava';
-
-
-//
-// Constant tests
-//
-
-test('nbsp', (t) => {
-    t.is(nbsp, String.fromCharCode(160));
-});
 
 
 //
