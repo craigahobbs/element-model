@@ -1,3 +1,11 @@
+## 0.9.3 (2021-08-05)
+
+- [e2f997f](https://github.com/craigahobbs/element-model/commit/e2f997f) - remove nbsp
+
+- [84ffe64](https://github.com/craigahobbs/element-model/commit/84ffe64) - use specific internal index.js export
+
+- [a9c431f](https://github.com/craigahobbs/element-model/commit/a9c431f) - simplify index.js export
+
 ## 0.9.2 (2021-06-12)
 
 - [a90d0c8](https://github.com/craigahobbs/element-model/commit/a90d0c8) - update readme with api documentation link
