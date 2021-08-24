@@ -1,6 +1,7 @@
 # Licensed under the MIT License
 # https://github.com/craigahobbs/element-model/blob/main/LICENSE
 
+
 # Download JavaScript Build
 define WGET
 ifeq '$$(wildcard $(notdir $(1)))' ''
@@ -13,8 +14,10 @@ $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-bui
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/jsdoc.json))
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/.eslintrc.cjs))
 
+
 # Include JavaScript Build
 include Makefile.base
+
 
 clean:
 	rm -rf Makefile.base jsdoc.json .eslintrc.cjs
