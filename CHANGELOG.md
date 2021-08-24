@@ -1,3 +1,7 @@
+## 0.9.4 (2021-08-24)
+
+- [4dc42fd](https://github.com/craigahobbs/element-model/commit/4dc42fd) - updates from javascript-template
+
 ## 0.9.3 (2021-08-05)
 
 - [e2f997f](https://github.com/craigahobbs/element-model/commit/e2f997f) - remove nbsp
