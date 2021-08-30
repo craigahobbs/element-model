@@ -1,3 +1,7 @@
+## 1.0.0 (2021-08-30)
+
+- [e357f80](https://github.com/craigahobbs/element-model/commit/e357f80) - udpate readme
+
 ## 0.9.4 (2021-08-24)
 
 - [4dc42fd](https://github.com/craigahobbs/element-model/commit/4dc42fd) - updates from javascript-template
