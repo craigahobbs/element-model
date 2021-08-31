@@ -80,13 +80,17 @@ This is &lt;a href=&quot;link.html&quot;>a &lt;strong>link&lt;/strong>&lt;/a>
 <p>An element model is rendered to the web browser using the
 <a href="https://craigahobbs.github.io/element-model/global.html#renderElements">renderElement</a>
 function.</p>
-<pre class="prettyprint source lang-javascript"><code>renderElements(window.document.body, elements);
+<pre class="prettyprint source lang-javascript"><code>import {renderElements} from 'element-model/index.js';
+
+renderElements(document.body, elements);
 </code></pre>
 <p>If the element model comes from an un-trusted source, you'll want to verify it before rendering
 using the
 <a href="https://craigahobbs.github.io/element-model/global.html#validateElements">validateElements</a>
 function.</p>
-<pre class="prettyprint source lang-javascript"><code>validateElements(elements)
+<pre class="prettyprint source lang-javascript"><code>import {validateElements} from 'element-model/index.js';
+
+validateElements(elements);
 </code></pre>
 <p>The validateElements function is also useful for testing element model components by ensuring that
 they return valid element model objects.</p>
@@ -144,7 +148,7 @@ renderElements(document.body, elements);
 </code></pre>
 <h3>Collapsing Menu</h3>
 <p>To create a collapsing menu, we add add an &quot;click&quot; event handler that hides or shows the sub-menu.</p>
-<pre class="prettyprint source"><code>const onHideShow = () => {
+<pre class="prettyprint source lang-javascript"><code>const onHideShow = () => {
     const submenu = document.getElementById('submenu');
     if (submenu.getAttribute('style').includes('visible')) {
         submenu.setAttribute('style', 'visibility: collapse;');
