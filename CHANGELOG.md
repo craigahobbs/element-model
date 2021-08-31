@@ -1,3 +1,9 @@
+## 1.0.1 (2021-08-31)
+
+- [8b06cf4](https://github.com/craigahobbs/element-model/commit/8b06cf4) - update readme
+
+- [6374875](https://github.com/craigahobbs/element-model/commit/6374875) - update readme
+
 ## 1.0.0 (2021-08-30)
 
 - [e357f80](https://github.com/craigahobbs/element-model/commit/e357f80) - udpate readme
