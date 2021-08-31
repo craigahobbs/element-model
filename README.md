@@ -46,7 +46,9 @@ An element model is rendered to the web browser using the
 function.
 
 ``` javascript
-renderElements(window.document.body, elements);
+import {renderElements} from 'element-model/index.js';
+
+renderElements(document.body, elements);
 ```
 
 If the element model comes from an un-trusted source, you'll want to verify it before rendering
@@ -55,7 +57,9 @@ using the
 function.
 
 ``` javascript
-validateElements(elements)
+import {validateElements} from 'element-model/index.js';
+
+validateElements(elements);
 ```
 
 The validateElements function is also useful for testing element model components by ensuring that
