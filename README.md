@@ -144,7 +144,7 @@ renderElements(document.body, elements);
 
 To create a collapsing menu, we add add an "click" event handler that hides or shows the sub-menu.
 
-```
+``` javascript
 const onHideShow = () => {
     const submenu = document.getElementById('submenu');
     if (submenu.getAttribute('style').includes('visible')) {
