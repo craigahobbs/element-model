@@ -176,7 +176,7 @@ renderElements(document.body, elements);
 
 ## Development
 
-This project is developed using [JavaScript Build](https://github.com/craigahobbs/javascript-build#readme). It was started
+This project is developed using [javascript-build](https://github.com/craigahobbs/javascript-build#readme). It was started
 using [javascript-template](https://github.com/craigahobbs/javascript-template#readme) as follows:
 
 ```
