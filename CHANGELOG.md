@@ -1,3 +1,7 @@
+## 1.0.2 (2021-09-09)
+
+- [bbb53cf](https://github.com/craigahobbs/element-model/commit/bbb53cf) - fix package keywords
+
 ## 1.0.1 (2021-08-31)
 
 - [8b06cf4](https://github.com/craigahobbs/element-model/commit/8b06cf4) - update readme
