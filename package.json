@@ -3,7 +3,12 @@
     "name": "element-model",
     "version": "1.0.1",
     "description": "HTML and SVG element object model and renderer for the browser",
-    "keywords": "html svg element model render browser",
+    "keywords": [
+        "html",
+        "svg",
+        "element",
+        "render"
+    ],
     "homepage": "https://github.com/craigahobbs/element-model#readme",
     "bugs": "https://github.com/craigahobbs/element-model/issues",
     "license": "MIT",
