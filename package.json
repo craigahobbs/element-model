@@ -1,7 +1,7 @@
 {
     "type": "module",
     "name": "element-model",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "HTML and SVG element object model and renderer for the browser",
     "keywords": [
         "html",
