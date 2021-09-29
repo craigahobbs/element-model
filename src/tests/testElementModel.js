@@ -4,7 +4,7 @@
 /* eslint-disable id-length */
 
 import {renderElements, validateElements} from '../element-model/index.js';
-import Window from 'window';
+import {JSDOM} from 'jsdom/lib/api.js';
 import test from 'ava';
 
 
@@ -207,7 +207,7 @@ test('validateElements, error callback invalid value', (t) => {
 //
 
 test('renderElements', (t) => {
-    const window = new Window();
+    const {window} = new JSDOM();
     const {document} = window;
 
     document.body.innerHTML = '';
@@ -229,7 +229,7 @@ test('renderElements', (t) => {
 
 
 test('renderElements, basic', (t) => {
-    const window = new Window();
+    const {window} = new JSDOM();
     const {document} = window;
     const elements = [
         {'html': 'h1', 'elem': {'text': 'Hello, World!'}},
@@ -251,7 +251,7 @@ test('renderElements, basic', (t) => {
 
 
 test('renderElements, non-string attribute value', (t) => {
-    const window = new Window();
+    const {window} = new JSDOM();
     const {document} = window;
     const elements = {'html': 'span', 'attr': {'style': 0}};
     validateElements(elements);
@@ -264,7 +264,7 @@ test('renderElements, non-string attribute value', (t) => {
 
 
 test('renderElements, svg', (t) => {
-    const window = new Window();
+    const {window} = new JSDOM();
     const {document} = window;
     const elements = [
         {'svg': 'svg', 'attr': {'width': '600', 'height': '400'}, 'elem': [
@@ -291,7 +291,7 @@ test('renderElements, svg', (t) => {
 
 
 test('renderElements, element callback', (t) => {
-    const window = new Window();
+    const {window} = new JSDOM();
     const {document} = window;
 
     let callbackCount = 0;
