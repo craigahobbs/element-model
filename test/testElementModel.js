@@ -29,8 +29,7 @@ test('validateElements', (t) => {
             {'html': 'hr', 'elem': null}
         ]
     };
-    validateElements(elements);
-    t.pass();
+    t.is(validateElements(elements), elements);
 });
 
 
@@ -241,7 +240,7 @@ test('renderElements, basic', (t) => {
         ],
         {'html': 'div', 'attr': {'id': 'Id', 'class': null}}
     ];
-    validateElements(elements);
+    t.is(validateElements(elements), elements);
     renderElements(document.body, elements);
     t.is(
         document.body.innerHTML,
@@ -254,7 +253,7 @@ test('renderElements, non-string attribute value', (t) => {
     const {window} = new JSDOM();
     const {document} = window;
     const elements = {'html': 'span', 'attr': {'style': 0}};
-    validateElements(elements);
+    t.is(validateElements(elements), elements);
     renderElements(document.body, elements);
     t.is(
         document.body.innerHTML,
@@ -278,7 +277,7 @@ test('renderElements, svg', (t) => {
             }
         ]}
     ];
-    validateElements(elements);
+    t.is(validateElements(elements), elements);
     renderElements(document.body, elements);
     t.is(
         document.body.innerHTML,
@@ -301,7 +300,7 @@ test('renderElements, element callback', (t) => {
     };
 
     const elements = {'html': 'div', 'callback': callback};
-    validateElements(elements);
+    t.is(validateElements(elements), elements);
     renderElements(document.body, elements);
     t.is(
         document.body.innerHTML,
