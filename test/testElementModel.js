@@ -3,7 +3,7 @@
 
 /* eslint-disable id-length */
 
-import {renderElements, validateElements} from '../element-model/index.js';
+import {renderElements, validateElements} from '../lib/elementModel.js';
 import {JSDOM} from 'jsdom/lib/api.js';
 import test from 'ava';
 

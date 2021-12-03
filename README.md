@@ -176,8 +176,8 @@ renderElements(document.body, elements);
 
 ## Development
 
-This project is developed using [javascript-build](https://github.com/craigahobbs/javascript-build#readme). It was started
-using [javascript-template](https://github.com/craigahobbs/javascript-template#readme) as follows:
+element-model is developed using [javascript-build](https://github.com/craigahobbs/javascript-build#readme)
+and it was started using [javascript-template](https://github.com/craigahobbs/javascript-template#readme):
 
 ```
 template-specialize javascript-template/template/ element-model/ -k package element-model -k name 'Craig A. Hobbs' -k email 'craigahobbs@gmail.com' -k github 'craigahobbs' -k noapp 1
