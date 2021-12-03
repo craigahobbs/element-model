@@ -1,3 +1,7 @@
+## 1.1.0 (2021-12-02)
+
+- [9dcea82](https://github.com/craigahobbs/element-model/commit/9dcea82) - updates from javascript-template
+
 ## 1.0.2 (2021-09-09)
 
 - [bbb53cf](https://github.com/craigahobbs/element-model/commit/bbb53cf) - fix package keywords
