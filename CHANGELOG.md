@@ -1,3 +1,7 @@
+## 1.1.1 (2021-12-03)
+
+- [cb2be24](https://github.com/craigahobbs/element-model/commit/cb2be24) - return the unchanged element model from validateElements for easier testing
+
 ## 1.1.0 (2021-12-02)
 
 - [9dcea82](https://github.com/craigahobbs/element-model/commit/9dcea82) - updates from javascript-template
