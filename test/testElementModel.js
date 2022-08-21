@@ -12,6 +12,7 @@ import test from 'ava';
 // validateElements tests
 //
 
+
 test('validateElements', (t) => {
     const elements = {
         'html': 'html',
@@ -35,175 +36,134 @@ test('validateElements', (t) => {
 
 test('validateElements, error missing element member', (t) => {
     const elements = {};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Missing element member {} (type 'object')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Missing element member {} (type 'object')");
 });
 
 
 test('validateElements, error multiple element members', (t) => {
     const elements = {'html': 'html', 'svg': 'svg'};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, 'Multiple element members html,svg {"html":"html","svg":"svg"} (type \'object\')');
+    }, {'instanceOf': Error});
+    t.is(error.message, 'Multiple element members html,svg {"html":"html","svg":"svg"} (type \'object\')');
 });
 
 
 test('validateElements, error unknown member', (t) => {
     const elements = {'html': 'html', 'unknown': 'abc'};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Unknown element member 'unknown'");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Unknown element member 'unknown'");
 });
 
 
 test('validateElements, error html length', (t) => {
     const elements = {'html': ''};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, 'Invalid html tag "" (type \'string\')');
+    }, {'instanceOf': Error});
+    t.is(error.message, 'Invalid html tag "" (type \'string\')');
 });
 
 
 test('validateElements, error html type', (t) => {
     const elements = {'html': 0};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid html tag 0 (type 'number')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid html tag 0 (type 'number')");
 });
 
 
 test('validateElements, error svg length', (t) => {
     const elements = {'svg': ''};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, 'Invalid svg tag "" (type \'string\')');
+    }, {'instanceOf': Error});
+    t.is(error.message, 'Invalid svg tag "" (type \'string\')');
 });
 
 
 test('validateElements, error svg type', (t) => {
     const elements = {'svg': 0};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid svg tag 0 (type 'number')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid svg tag 0 (type 'number')");
 });
 
 
 test('validateElements, error text type', (t) => {
     const elements = {'text': 0};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid text tag 0 (type 'number')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid text tag 0 (type 'number')");
 });
 
 
 test('validateElements, error attr type', (t) => {
     const elements = {'html': 'html', 'attr': 0};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid attributes 0 (type 'number')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid attributes 0 (type 'number')");
 });
 
 
 test('validateElements, error attr text element', (t) => {
     const elements = {'text': 'abc', 'attr': null};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, 'Invalid member "attr" for text element "abc" (type \'string\')');
+    }, {'instanceOf': Error});
+    t.is(error.message, 'Invalid member "attr" for text element "abc" (type \'string\')');
 });
 
 
 test('validateElements, error elem type', (t) => {
     const elements = {'html': 'html', 'elem': [0]};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid element 0 (type 'number')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid element 0 (type 'number')");
 });
 
 
 test('validateElements, error elem text element', (t) => {
     const elements = {'text': 'abc', 'elem': null};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, 'Invalid member "elem" for text element "abc" (type \'string\')');
+    }, {'instanceOf': Error});
+    t.is(error.message, 'Invalid member "elem" for text element "abc" (type \'string\')');
 });
 
 
 test('validateElements, error callback null value', (t) => {
     const elements = {'html': 'html', 'callback': null};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid element callback function null (type 'object')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid element callback function null (type 'object')");
 });
 
 
 test('validateElements, error callback invalid value', (t) => {
     const elements = {'html': 'html', 'callback': 0};
-    let errorMessage = null;
-    try {
+    const error = t.throws(() => {
         validateElements(elements);
-    } catch ({message}) {
-        errorMessage = message;
-    }
-    t.is(errorMessage, "Invalid element callback function 0 (type 'number')");
+    }, {'instanceOf': Error});
+    t.is(error.message, "Invalid element callback function 0 (type 'number')");
 });
 
 
 //
 // renderElements tests
 //
+
 
 test('renderElements', (t) => {
     const {window} = new JSDOM();
