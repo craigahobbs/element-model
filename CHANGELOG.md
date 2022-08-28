@@ -1,3 +1,5 @@
+# Changelog
+
 ## 1.1.3 (2021-12-09)
 
 - [1f7a8af](https://github.com/craigahobbs/element-model/commit/1f7a8af) - update readme
