@@ -56,7 +56,7 @@ An element model is rendered to the web browser using the
 function.
 
 ~~~ javascript
-import {renderElements} from 'element-model/elementModel.js';
+import {renderElements} from 'element-model/lib/elementModel.js';
 
 renderElements(document.body, elements);
 ~~~
@@ -67,7 +67,7 @@ using the
 function.
 
 ~~~ javascript
-import {validateElements} from 'element-model/elementModel.js';
+import {validateElements} from 'element-model/lib/elementModel.js';
 
 validateElements(elements);
 ~~~
@@ -129,6 +129,7 @@ renderElements(document.body, elements);
 To hide optional content, simple replace the content's element model with null. For example:
 
 ~~~ javascript
+const hasOptionalContent = false;
 const elements = [
     {'html': 'p', 'elem': {'text': 'This is required content'}},
     !hasOptionalContent ? null : {'html': 'p', 'elem': {'text': 'This is optional content'}}
