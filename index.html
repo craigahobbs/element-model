@@ -46,7 +46,14 @@
         <article><h1>element-model</h1>
 <p><a href="https://www.npmjs.com/package/element-model"><img src="https://img.shields.io/npm/v/element-model" alt="npm"></a>
 <a href="https://github.com/craigahobbs/element-model/blob/main/LICENSE"><img src="https://img.shields.io/github/license/craigahobbs/element-model" alt="GitHub"></a></p>
-<p><a href="https://craigahobbs.github.io/element-model/">element-model API Documentation</a></p>
+<p>The element-model package is a JavaScript library for creating and rendering HTML and SVG element
+hierarchies. It is useful for the creation of front-end components and applications.</p>
+<h2>Links</h2>
+<ul>
+<li><a href="https://craigahobbs.github.io/element-model/">API Documentation</a></li>
+<li><a href="https://github.com/craigahobbs/element-model">Source code</a></li>
+</ul>
+<h2>Rendering HTML Elements</h2>
 <p>The element model is a native JavaScript object representation of HTML and SVG element hierarchies.
 It provides a straight-forward, programmatic way to generate HTML content in the web browser using
 pure JavaScript. For example, consider the following HTML element hierarchy:</p>
@@ -80,7 +87,7 @@ This is &lt;a href=&quot;link.html&quot;>a &lt;strong>link&lt;/strong>&lt;/a>
 <p>An element model is rendered to the web browser using the
 <a href="https://craigahobbs.github.io/element-model/module-lib_elementModel.html#.renderElements">renderElement</a>
 function.</p>
-<pre class="prettyprint source lang-javascript"><code>import {renderElements} from 'element-model/elementModel.js';
+<pre class="prettyprint source lang-javascript"><code>import {renderElements} from 'element-model/lib/elementModel.js';
 
 renderElements(document.body, elements);
 </code></pre>
@@ -88,7 +95,7 @@ renderElements(document.body, elements);
 using the
 <a href="https://craigahobbs.github.io/element-model/module-lib_elementModel.html#.validateElements">validateElements</a>
 function.</p>
-<pre class="prettyprint source lang-javascript"><code>import {validateElements} from 'element-model/elementModel.js';
+<pre class="prettyprint source lang-javascript"><code>import {validateElements} from 'element-model/lib/elementModel.js';
 
 validateElements(elements);
 </code></pre>
@@ -128,7 +135,8 @@ renderElements(document.body, elements);
 </code></pre>
 <h3>Optional Content</h3>
 <p>To hide optional content, simple replace the content's element model with null. For example:</p>
-<pre class="prettyprint source lang-javascript"><code>const elements = [
+<pre class="prettyprint source lang-javascript"><code>const hasOptionalContent = false;
+const elements = [
     {'html': 'p', 'elem': {'text': 'This is required content'}},
     !hasOptionalContent ? null : {'html': 'p', 'elem': {'text': 'This is optional content'}}
 ];
@@ -172,8 +180,8 @@ const elements = [
 renderElements(document.body, elements);
 </code></pre>
 <h2>Development</h2>
-<p>element-model is developed using <a href="https://github.com/craigahobbs/javascript-build#readme">javascript-build</a>
-and it was started using <a href="https://github.com/craigahobbs/javascript-template#readme">javascript-template</a>:</p>
+<p>This package is developed using <a href="https://github.com/craigahobbs/javascript-build#readme">javascript-build</a>.
+It was started using <a href="https://github.com/craigahobbs/javascript-template#readme">javascript-template</a> as follows:</p>
 <pre class="prettyprint source"><code>template-specialize javascript-template/template/ element-model/ -k package element-model -k name 'Craig A. Hobbs' -k email 'craigahobbs@gmail.com' -k github 'craigahobbs' -k noapp 1
 </code></pre></article>
     </section>
