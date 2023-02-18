@@ -34,6 +34,12 @@ test('validateElements', (t) => {
 });
 
 
+test('validateElements, callback null', (t) => {
+    const elements = {'html': 'html', 'callback': null};
+    t.is(validateElements(elements), elements);
+});
+
+
 test('validateElements, error missing element member', (t) => {
     const elements = {};
     const error = t.throws(() => {
@@ -139,15 +145,6 @@ test('validateElements, error elem text element', (t) => {
         validateElements(elements);
     }, {'instanceOf': Error});
     t.is(error.message, 'Invalid member "elem" for text element "abc" (type \'string\')');
-});
-
-
-test('validateElements, error callback null value', (t) => {
-    const elements = {'html': 'html', 'callback': null};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid element callback function null (type 'object')");
 });
 
 
@@ -267,4 +264,18 @@ test('renderElements, element callback', (t) => {
         '<div></div>'
     );
     t.is(callbackCount, 1);
+});
+
+
+test('renderElements, element callback null', (t) => {
+    const {window} = new JSDOM();
+    const {document} = window;
+
+    const elements = {'html': 'div', 'callback': null};
+    t.is(validateElements(elements), elements);
+    renderElements(document.body, elements);
+    t.is(
+        document.body.innerHTML,
+        '<div></div>'
+    );
 });
