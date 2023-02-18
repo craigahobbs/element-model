@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.4 (2023-02-18)
+
+- [50719c5](https://github.com/craigahobbs/element-model/commit/50719c5) - allow null element callback
+
 ## 1.1.3 (2021-12-09)
 
 - [1f7a8af](https://github.com/craigahobbs/element-model/commit/1f7a8af) - update readme
