@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5 (2023-05-23)
+
+- [df62fa5](https://github.com/craigahobbs/element-model/commit/df62fa5) - use node --test for unit testing
+
 ## 1.1.4 (2023-02-18)
 
 - [50719c5](https://github.com/craigahobbs/element-model/commit/50719c5) - allow null element callback
