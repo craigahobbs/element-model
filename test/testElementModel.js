@@ -1,11 +1,10 @@
 // Licensed under the MIT License
 // https://github.com/craigahobbs/element-model/blob/main/LICENSE
 
-/* eslint-disable id-length */
-
 import {renderElements, validateElements} from '../lib/elementModel.js';
 import {JSDOM} from 'jsdom/lib/api.js';
-import test from 'ava';
+import {strict as assert} from 'node:assert';
+import test from 'node:test';
 
 
 //
@@ -13,7 +12,7 @@ import test from 'ava';
 //
 
 
-test('validateElements', (t) => {
+test('validateElements', () => {
     const elements = {
         'html': 'html',
         'elem': [
@@ -30,130 +29,195 @@ test('validateElements', (t) => {
             {'html': 'hr', 'elem': null}
         ]
     };
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
 });
 
 
-test('validateElements, callback null', (t) => {
+test('validateElements, callback null', () => {
     const elements = {'html': 'html', 'callback': null};
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
 });
 
 
-test('validateElements, error missing element member', (t) => {
+test('validateElements, error missing element member', () => {
     const elements = {};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Missing element member {} (type 'object')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Missing element member {} (type 'object')"
+        }
+    );
 });
 
 
-test('validateElements, error multiple element members', (t) => {
+test('validateElements, error multiple element members', () => {
     const elements = {'html': 'html', 'svg': 'svg'};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, 'Multiple element members html,svg {"html":"html","svg":"svg"} (type \'object\')');
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': 'Multiple element members html,svg {"html":"html","svg":"svg"} (type \'object\')'
+        }
+    );
 });
 
 
-test('validateElements, error unknown member', (t) => {
+test('validateElements, error unknown member', () => {
     const elements = {'html': 'html', 'unknown': 'abc'};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Unknown element member 'unknown'");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Unknown element member 'unknown'"
+        }
+    );
 });
 
 
-test('validateElements, error html length', (t) => {
+test('validateElements, error html length', () => {
     const elements = {'html': ''};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, 'Invalid html tag "" (type \'string\')');
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': 'Invalid html tag "" (type \'string\')'
+        }
+    );
 });
 
 
-test('validateElements, error html type', (t) => {
+test('validateElements, error html type', () => {
     const elements = {'html': 0};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid html tag 0 (type 'number')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Invalid html tag 0 (type 'number')"
+        }
+    );
 });
 
 
-test('validateElements, error svg length', (t) => {
+test('validateElements, error svg length', () => {
     const elements = {'svg': ''};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, 'Invalid svg tag "" (type \'string\')');
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': 'Invalid svg tag "" (type \'string\')'
+        }
+    );
 });
 
 
-test('validateElements, error svg type', (t) => {
+test('validateElements, error svg type', () => {
     const elements = {'svg': 0};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid svg tag 0 (type 'number')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Invalid svg tag 0 (type 'number')"
+        }
+    );
 });
 
 
-test('validateElements, error text type', (t) => {
+test('validateElements, error text type', () => {
     const elements = {'text': 0};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid text tag 0 (type 'number')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Invalid text tag 0 (type 'number')"
+        }
+    );
 });
 
 
-test('validateElements, error attr type', (t) => {
+test('validateElements, error attr type', () => {
     const elements = {'html': 'html', 'attr': 0};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid attributes 0 (type 'number')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Invalid attributes 0 (type 'number')"
+        }
+    );
 });
 
 
-test('validateElements, error attr text element', (t) => {
+test('validateElements, error attr text element', () => {
     const elements = {'text': 'abc', 'attr': null};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, 'Invalid member "attr" for text element "abc" (type \'string\')');
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': 'Invalid member "attr" for text element "abc" (type \'string\')'
+        }
+    );
 });
 
 
-test('validateElements, error elem type', (t) => {
+test('validateElements, error elem type', () => {
     const elements = {'html': 'html', 'elem': [0]};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid element 0 (type 'number')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Invalid element 0 (type 'number')"
+        }
+    );
 });
 
 
-test('validateElements, error elem text element', (t) => {
+test('validateElements, error elem text element', () => {
     const elements = {'text': 'abc', 'elem': null};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, 'Invalid member "elem" for text element "abc" (type \'string\')');
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': 'Invalid member "elem" for text element "abc" (type \'string\')'
+        }
+    );
 });
 
 
-test('validateElements, error callback invalid value', (t) => {
+test('validateElements, error callback invalid value', () => {
     const elements = {'html': 'html', 'callback': 0};
-    const error = t.throws(() => {
-        validateElements(elements);
-    }, {'instanceOf': Error});
-    t.is(error.message, "Invalid element callback function 0 (type 'number')");
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'Error',
+            'message': "Invalid element callback function 0 (type 'number')"
+        }
+    );
 });
 
 
@@ -162,29 +226,29 @@ test('validateElements, error callback invalid value', (t) => {
 //
 
 
-test('renderElements', (t) => {
+test('renderElements', () => {
     const {window} = new JSDOM();
     const {document} = window;
 
     document.body.innerHTML = '';
     renderElements(document.body, {'html': 'div'});
-    t.is(document.body.innerHTML, '<div></div>');
+    assert.equal(document.body.innerHTML, '<div></div>');
 
     renderElements(document.body, [{'html': 'div'}, {'html': 'div', 'attr': {'id': 'Id'}}]);
-    t.is(document.body.innerHTML, '<div></div><div id="Id"></div>');
+    assert.equal(document.body.innerHTML, '<div></div><div id="Id"></div>');
 
     renderElements(document.body, {'html': 'div'}, false);
-    t.is(document.body.innerHTML, '<div></div><div id="Id"></div><div></div>');
+    assert.equal(document.body.innerHTML, '<div></div><div id="Id"></div><div></div>');
 
     renderElements(document.body, null);
-    t.is(document.body.innerHTML, '');
+    assert.equal(document.body.innerHTML, '');
 
     renderElements(document.body);
-    t.is(document.body.innerHTML, '');
+    assert.equal(document.body.innerHTML, '');
 });
 
 
-test('renderElements, basic', (t) => {
+test('renderElements, basic', () => {
     const {window} = new JSDOM();
     const {document} = window;
     const elements = [
@@ -197,29 +261,29 @@ test('renderElements, basic', (t) => {
         ],
         {'html': 'div', 'attr': {'id': 'Id', 'class': null}}
     ];
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
     renderElements(document.body, elements);
-    t.is(
+    assert.equal(
         document.body.innerHTML,
         '<h1>Hello, World!</h1><p>Word</p><p>TwoWords</p><p></p><p></p><div id="Id"></div>'
     );
 });
 
 
-test('renderElements, non-string attribute value', (t) => {
+test('renderElements, non-string attribute value', () => {
     const {window} = new JSDOM();
     const {document} = window;
     const elements = {'html': 'span', 'attr': {'style': 0}};
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
     renderElements(document.body, elements);
-    t.is(
+    assert.equal(
         document.body.innerHTML,
         '<span style="0"></span>'
     );
 });
 
 
-test('renderElements, svg', (t) => {
+test('renderElements, svg', () => {
     const {window} = new JSDOM();
     const {document} = window;
     const elements = [
@@ -234,9 +298,9 @@ test('renderElements, svg', (t) => {
             }
         ]}
     ];
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
     renderElements(document.body, elements);
-    t.is(
+    assert.equal(
         document.body.innerHTML,
         '<svg width="600" height="400">' +
             '<rect x="10" y="10" width="20" height="20" style="fill: #ff0000;"></rect>' +
@@ -246,35 +310,35 @@ test('renderElements, svg', (t) => {
 });
 
 
-test('renderElements, element callback', (t) => {
+test('renderElements, element callback', () => {
     const {window} = new JSDOM();
     const {document} = window;
 
     let callbackCount = 0;
     const callback = (element) => {
-        t.true(typeof element !== 'undefined');
+        assert.equal(typeof element !== 'undefined', true);
         callbackCount += 1;
     };
 
     const elements = {'html': 'div', 'callback': callback};
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
     renderElements(document.body, elements);
-    t.is(
+    assert.equal(
         document.body.innerHTML,
         '<div></div>'
     );
-    t.is(callbackCount, 1);
+    assert.equal(callbackCount, 1);
 });
 
 
-test('renderElements, element callback null', (t) => {
+test('renderElements, element callback null', () => {
     const {window} = new JSDOM();
     const {document} = window;
 
     const elements = {'html': 'div', 'callback': null};
-    t.is(validateElements(elements), elements);
+    assert.equal(validateElements(elements), elements);
     renderElements(document.body, elements);
-    t.is(
+    assert.equal(
         document.body.innerHTML,
         '<div></div>'
     );
