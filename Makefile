@@ -16,6 +16,7 @@ $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-bui
 
 
 # Include javascript-build
+USE_JSDOM := 1
 include Makefile.base
 
 
