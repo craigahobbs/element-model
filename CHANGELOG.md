@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0 (2025-09-16)
+
+- [e0e5968](https://github.com/craigahobbs/element-model/commit/e0e5968) - add renderElementsToString function; validateElements now throws ElementModelValidationError
+
 ## 1.1.5 (2023-05-23)
 
 - [df62fa5](https://github.com/craigahobbs/element-model/commit/df62fa5) - use node --test for unit testing
