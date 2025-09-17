@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2 (2025-09-17)
+
+- [694b1b2](https://github.com/craigahobbs/element-model/commit/694b1b2) - renderElementsToString improvements
+
 ## 1.2.1 (2025-09-17)
 
 - [3c0c720](https://github.com/craigahobbs/element-model/commit/3c0c720) - remove unused argument
