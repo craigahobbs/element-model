@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1 (2025-09-17)
+
+- [3c0c720](https://github.com/craigahobbs/element-model/commit/3c0c720) - remove unused argument
+
 ## 1.2.0 (2025-09-16)
 
 - [e0e5968](https://github.com/craigahobbs/element-model/commit/e0e5968) - add renderElementsToString function; validateElements now throws ElementModelValidationError
