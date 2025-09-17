@@ -389,7 +389,7 @@ test('renderElementsToString, simple html', () => {
 
 
 test('renderElementsToString, html with attr', () => {
-    assert.equal(renderElementsToString({'html': 'div', 'attr': {'id': 'foo', 'class': 'bar'}}), '<div id="foo" class="bar"></div>');
+    assert.equal(renderElementsToString({'html': 'div', 'attr': {'id': 'foo', 'class': 'bar'}}), '<div class="bar" id="foo"></div>');
 });
 
 
@@ -422,7 +422,7 @@ test('renderElementsToString, array', () => {
 
 
 test('renderElementsToString, svg', () => {
-    assert.equal(renderElementsToString({'svg': 'svg'}), '<svg></svg>');
+    assert.equal(renderElementsToString({'svg': 'svg'}), '<svg xmlns="http://www.w3.org/2000/svg"></svg>');
 });
 
 
@@ -483,7 +483,7 @@ test('renderElementsToString, complex', () => {
     };
     assert.equal(
         renderElementsToString(elements),
-        '<html><h1>Title</h1><p>This is some <span style="font-weight: bold;">bolded text!</span></p><hr /></html>'
+        '<!DOCTYPE html>\n<html><h1>Title</h1><p>This is some <span style="font-weight: bold;">bolded text!</span></p><hr /></html>'
     );
 });
 
@@ -503,9 +503,9 @@ test('renderElementsToString, svg complex', () => {
     ];
     assert.equal(
         renderElementsToString(elements),
-        '<svg width="600" height="400">' +
-            '<rect x="10" y="10" width="20" height="20" style="fill: #ff0000;"></rect>' +
-            '<rect x="10" y="10" width="20" height="20" style="fill: #00ff00;"></rect>' +
+        '<svg height="400" width="600" xmlns="http://www.w3.org/2000/svg">' +
+            '<rect height="20" style="fill: #ff0000;" width="20" x="10" y="10"></rect>' +
+            '<rect height="20" style="fill: #00ff00;" width="20" x="10" y="10"></rect>' +
             '</svg>'
     );
 });
@@ -552,12 +552,13 @@ test('renderElementsToString, indent complex', () => {
     assert.equal(
         renderElementsToString(elements, 2),
         `\
+<!DOCTYPE html>
 <html>
   <h1>
     Title
   </h1>
   <p>
-    This is some 
+    This is some
     <span style="font-weight: bold;">
       bolded text!
     </span>
