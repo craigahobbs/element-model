@@ -39,6 +39,12 @@ test('validateElements, callback null', () => {
 });
 
 
+test('validateElements, text type', () => {
+    const elements = {'text': 0};
+    assert.equal(validateElements(elements), elements);
+});
+
+
 test('validateElements, error missing element member', () => {
     const elements = {};
     assert.throws(
@@ -132,20 +138,6 @@ test('validateElements, error svg type', () => {
         {
             'name': 'ElementModelValidationError',
             'message': "Invalid svg tag 0 (type 'number')"
-        }
-    );
-});
-
-
-test('validateElements, error text type', () => {
-    const elements = {'text': 0};
-    assert.throws(
-        () => {
-            validateElements(elements);
-        },
-        {
-            'name': 'ElementModelValidationError',
-            'message': "Invalid text tag 0 (type 'number')"
         }
     );
 });
@@ -255,7 +247,7 @@ test('renderElements, basic', () => {
         {'html': 'h1', 'elem': {'text': 'Hello, World!'}},
         [
             {'html': 'p', 'elem': [{'text': 'Word'}]},
-            {'html': 'p', 'elem': [{'text': 'Two'}, {'text': 'Words'}]},
+            {'html': 'p', 'elem': [{'text': 2}, {'text': ' Words'}]},
             {'html': 'p', 'elem': []},
             {'html': 'p', 'elem': null}
         ],
@@ -265,7 +257,7 @@ test('renderElements, basic', () => {
     renderElements(document.body, elements);
     assert.equal(
         document.body.innerHTML,
-        '<h1>Hello, World!</h1><p>Word</p><p>TwoWords</p><p></p><p></p><div id="Id"></div>'
+        '<h1>Hello, World!</h1><p>Word</p><p>2 Words</p><p></p><p></p><div id="Id"></div>'
     );
 });
 
@@ -374,7 +366,7 @@ test('renderElementsToString, empty array', () => {
 
 
 test('renderElementsToString, text', () => {
-    assert.equal(renderElementsToString({'text': 'Hello'}), 'Hello');
+    assert.equal(renderElementsToString([{'text': 'Hello '}, {'text': 5}]), 'Hello 5');
 });
 
 
