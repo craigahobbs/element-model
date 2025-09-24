@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3 (2025-09-24)
+
+- [cb62f6d](https://github.com/craigahobbs/element-model/commit/cb62f6d) - allow non-string text node text
+
 ## 1.2.2 (2025-09-17)
 
 - [694b1b2](https://github.com/craigahobbs/element-model/commit/694b1b2) - renderElementsToString improvements
