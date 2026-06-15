@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.4 (2026-06-14)
+
+- [ff28928](https://github.com/craigahobbs/element-model/commit/ff28928) - misc fixes and perf improvements
+
 ## 1.2.3 (2025-09-24)
 
 - [cb62f6d](https://github.com/craigahobbs/element-model/commit/cb62f6d) - allow non-string text node text
