@@ -213,6 +213,47 @@ test('validateElements, error callback invalid value', () => {
 });
 
 
+test('validateElements, error bigint value', () => {
+    assert.throws(
+        () => {
+            validateElements(10n);
+        },
+        {
+            'name': 'ElementModelValidationError',
+            'message': "Invalid element 10 (type 'bigint')"
+        }
+    );
+});
+
+
+test('validateElements, error circular value', () => {
+    const elements = {};
+    elements.self = elements;
+    assert.throws(
+        () => {
+            validateElements(elements);
+        },
+        {
+            'name': 'ElementModelValidationError',
+            'message': "Missing element member [object Object] (type 'object')"
+        }
+    );
+});
+
+
+test('validateElements, error undefined value', () => {
+    assert.throws(
+        () => {
+            validateElements(undefined);
+        },
+        {
+            'name': 'ElementModelValidationError',
+            'message': "Invalid element undefined (type 'undefined')"
+        }
+    );
+});
+
+
 //
 // renderElements tests
 //
@@ -415,6 +456,14 @@ test('renderElementsToString, array', () => {
 
 test('renderElementsToString, svg', () => {
     assert.equal(renderElementsToString({'svg': 'svg'}), '<svg xmlns="http://www.w3.org/2000/svg"></svg>');
+});
+
+
+test('renderElementsToString, svg attr not mutated', () => {
+    const attr = {'width': '100'};
+    const elements = {'svg': 'svg', 'attr': attr};
+    assert.equal(renderElementsToString(elements), '<svg width="100" xmlns="http://www.w3.org/2000/svg"></svg>');
+    assert.deepEqual(attr, {'width': '100'});
 });
 
 
