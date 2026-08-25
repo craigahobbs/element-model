@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Notes for coding agents working in this repository.
 
 ## Overview
 
@@ -8,26 +8,13 @@ element-model is a small, dependency-free JavaScript (ESM) library that renders 
 hierarchies described as plain JavaScript objects. The entire implementation is one file,
 `lib/elementModel.js`, with one test file, `test/testElementModel.js`.
 
-## Commands
+## javascript-build
 
-The project builds with [javascript-build](https://github.com/craigahobbs/javascript-build) via a
-`Makefile` that downloads `Makefile.base`, `eslint.config.js`, and `jsdoc.json` on first run (copying
-from a sibling `../javascript-build` checkout if present, otherwise fetching from the web).
+This is a [javascript-build](https://github.com/craigahobbs/javascript-build#readme) package. Read the javascript-build skill before running tests, lint, coverage, or changing the Makefile: [`../javascript-build/SKILL.md`](../javascript-build/SKILL.md) if that file exists, otherwise [https://raw.githubusercontent.com/craigahobbs/javascript-build/main/SKILL.md](https://raw.githubusercontent.com/craigahobbs/javascript-build/main/SKILL.md).
 
-- `make commit` — the full gate: runs `test`, `lint`, `doc`, and `cover`. Run this before considering work done.
-- `make test` — run unit tests (`node --test`).
-- `make test TEST='pattern'` — run only tests whose name matches `pattern` (passed to `--test-name-pattern`).
-- `make lint` — ESLint.
-- `make doc` — generate JSDoc into `build/doc/`.
-- `make cover` — run tests under c8 with **100% coverage required** (`--100 --all`); HTML report in `build/coverage/`.
-- `make clean` / `make superclean` — remove build artifacts (and downloaded build files / caches).
-- `npm test` also works for a quick test run without the Makefile.
+Local Makefile overrides:
 
-By default commands run against the **host's** Node/npm. Set `USE_DOCKER=1` or `USE_PODMAN=1` to run
-inside the pinned container image instead (e.g. `make test USE_DOCKER=1`).
-
-Because `make cover` enforces 100% line/branch coverage, any new code path must come with a covering
-test or CI (`make commit`) will fail.
+- `USE_JSDOM` — jsdom is a development dependency (tests need a DOM)
 
 ## Architecture
 
